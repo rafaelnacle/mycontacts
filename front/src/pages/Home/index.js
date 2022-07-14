@@ -50,10 +50,14 @@ export default function Home() {
   );
 }
 
-fetch('http://localhost:3000')
+fetch('http://localhost:3001/contacts')
   .then((response) => {
     console.log('response', response);
   })
   .catch((error) => {
     console.log('erro:', error);
   });
+
+// SOP -> Same Origin Policy
+// CORS -> Cross-Origin Resource Sharing
+// Origin: protocol://host:port

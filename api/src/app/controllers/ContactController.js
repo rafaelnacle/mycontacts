@@ -6,6 +6,8 @@ class ContactController {
 
     const contacts = await ContactsRepository.findAll(orderBy);
 
+    // Wildcard = *
+    response.setHeader('Access-Control-Allow-Origin', '*');
     response.json(contacts);
   }
 

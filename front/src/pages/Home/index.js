@@ -50,7 +50,12 @@ export default function Home() {
   );
 }
 
-fetch('http://localhost:3001/contacts')
+fetch('http://localhost:3001/contacts', {
+  method: 'GET',
+  headers: new Headers({
+    'X-App-ID': '123',
+  }),
+})
   .then((response) => {
     console.log('response', response);
   })
@@ -58,6 +63,6 @@ fetch('http://localhost:3001/contacts')
     console.log('erro:', error);
   });
 
-// SOP -> Same Origin Policy
+// SOP  -> Same Origin Policy
 // CORS -> Cross-Origin Resource Sharing
 // Origin: protocol://host:port

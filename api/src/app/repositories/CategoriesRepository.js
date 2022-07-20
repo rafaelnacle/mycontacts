@@ -1,14 +1,10 @@
 const db = require('../../database');
 
 class CategoriesRepository {
-  async findAll(orderBy) {
-    const direction = orderBy.toUpperCase() === 'DESC' ? 'DESC' : 'ASC';
+  async findAll() {
+    const rows = await db.query('SELECT * FROM categories ORDER BY name');
 
-    const row = await db.query(`
-    SELECT * FROM categories ORDER BY name ${direction}
-    `);
-
-    return row;
+    return rows;
   }
 
   async create({ name }) {
@@ -30,8 +26,6 @@ class CategoriesRepository {
   }
 
   async update(id, { name }) {
-    console.log(id, name);
-
     const [row] = await db.query(`
     UPDATE categories
     SET name = $1

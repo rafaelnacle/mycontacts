@@ -12,8 +12,6 @@ class ContactRepository {
      ORDER BY contacts.name ${direction}
      `);
 
-    // categories.name AS category_name serve para apenas nessa query mudar o nome da propriedade
-
     /*
       INNER JOIN -> retorna apenas a interseção dos valores
       LEFT JOIN -> retorna apenas os registros da interseção mas também os que não estão (no caso a tabela das esquerda)
@@ -30,12 +28,12 @@ class ContactRepository {
     FROM contacts
     LEFT JOIN categories ON categories.id = contacts.category_id
     WHERE contacts.id = $1`,
-    [id]); // WHERE == ONDE
+    [id]);
     return row;
   }
 
   async findByEmail(email) {
-    const [row] = await db.query('SELECT * FROM contacts WHERE email = $1', [email]); // WHERE == ONDE
+    const [row] = await db.query('SELECT * FROM contacts WHERE email = $1', [email]);
     return row;
   }
 
@@ -43,9 +41,6 @@ class ContactRepository {
     const deleteOp = await db.query(`
     DELETE FROM contacts WHERE id = $1
     `, [id]);
-
-    // [] -> retorno do delete
-
     return deleteOp;
   }
 

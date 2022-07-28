@@ -8,9 +8,13 @@ export default function ToastMessage({
   message, onRemoveMessage,
 }) {
   useEffect(() => {
-    setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       onRemoveMessage(message.id);
-    }, 3000);
+    }, message.duration || 7000);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
   }, [message, onRemoveMessage]);
 
   function handleRemoveToast() {
@@ -36,6 +40,7 @@ ToastMessage.propTypes = {
     id: PropTypes.number.isRequired,
     text: PropTypes.string.isRequired,
     type: PropTypes.oneOf(['default', 'success', 'danger']),
+    duration: PropTypes.number,
   }).isRequired,
 
   onRemoveMessage: PropTypes.func.isRequired,

@@ -17,7 +17,6 @@ function App() {
       <ThemeProvider theme={defaultTheme}>
         <GlobalStyles />
         <ToastContainer />
-
         <Container>
           <Header />
           <Routes />

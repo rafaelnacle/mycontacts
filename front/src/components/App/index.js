@@ -28,3 +28,8 @@ function App() {
 }
 
 export default App;
+
+// Browse Router: componente que habilita as funções de rotas do sistema
+// Theme Provider: envia os temas para as camadas mais abaixo(filhos)
+// GlobalStyles: estilos globais como margens, fontes etc...
+// Routes: é a parte dinâmica da aplicação, onde muda em cada rota acessada
